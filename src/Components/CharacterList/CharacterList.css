@@ -1,0 +1,36 @@
+form {
+  width: 100%;
+}
+
+.form-input{
+    padding-left: 10px;
+    width : 25%;
+    height: 40px;
+    border: 2px solid #ffa500;
+    border-radius: 10px 10px 10px 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .Inline {
+        width : 25%;
+    }
+  }
+
+@media only screen and (max-width: 999px) {
+    .Inline {
+        width : 50%;
+    }
+  }
+
+.search-button {
+    margin-left: 1em;
+  }
+
+.dropdown-menu {
+    max-height: 100px;
+    overflow-y: auto;
+}

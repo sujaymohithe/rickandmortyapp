@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HomeSearch from './Containers/HomeSearch';
+import Header from './Components/Header/Header';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <p>Under construction</p>
+      <Header />
+      <HomeSearch />
     </div>
   );
 }
