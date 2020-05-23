@@ -1,0 +1,16 @@
+.articleHeader{
+    float: left;
+}
+.articleContent{
+    width: 75%;
+    float: left;
+    margin-left: 35px;
+}
+
+.article-section{
+    padding-top: 20px;
+}
+
+.chac-col{
+    border-right: orange 1px solid;
+}

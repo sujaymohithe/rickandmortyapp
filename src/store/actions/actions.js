@@ -25,13 +25,49 @@ export const getCharactersListFailure = (error) => {
 };
 
 //currying the dispatch method of the store to get all characters list
-export function getCharactersList(url, filter) {
+export function getCharactersList(url, filterType, filterValue) {
     return function (dispatch) {
         //dispatch(getCharactersListStart());
-        return charactersAPI.fetchCharactersList(url, filter).then(data => {
+        return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
             dispatch(getCharactersListSuccess(data));
         }).catch(error => {
-            throw (error);
+            dispatch(getCharactersListFailure(error));
+        });
+    };
+}
+
+//get same species other character recommendation list start dispatch method
+export const getRecommendationListStart = () => {
+    return {
+        type: actionTypes.GET_RECOMMENDATIONLIST_START
+    };
+};
+
+//get same species other character recommendation list start dispatch method
+export const getRecommendationListSuccess = (list) => {
+    return {
+        type: actionTypes.GET_RECOMMENDATIONLIST_SUCCESS,
+        data: list
+    };
+};
+
+//get characters list failure dispatch method
+export const getRecommendationListFailure = (error) => {
+    return {
+        type: actionTypes.GET_RECOMMENDATIONLIST_FAIL,
+        error: error
+    };
+};
+
+//currying the dispatch method of the store to get all other recommendations list
+export function getOtherRecommendationList(url, filterType, filterValue) {
+    debugger;
+    return function (dispatch) {
+        //dispatch(getRecommendationListStart());
+        return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
+            dispatch(getRecommendationListSuccess(data));
+        }).catch(error => {
+            dispatch(getRecommendationListFailure(error));
         });
     };
 }
@@ -64,6 +100,7 @@ export function getCharacterDetailsById(id) {
     return function (dispatch) {
         dispatch(getCharacterDetailsStart());
         return charactersAPI.fetchCharacterDetailsById(id).then(data => {
+            debugger;
             dispatch(getCharacterDetailsSuccess(data));
         }).catch(error => {
             dispatch(getCharacterDetailsFailure(error));

@@ -5,7 +5,7 @@ import * as actions from '../store/actions/actions';
 import CharacterList from '../Components/CharacterList/CharacterList';
 
 const HomeSearch = props => {
-    const { getCharactersList, getCharacterDetailsById } = props;
+    const { getCharactersList, getCharacterDetailsById, getOtherRecommendationList } = props;
     useEffect(() => {
         getCharactersList();
     }, [getCharactersList]);
@@ -15,7 +15,9 @@ const HomeSearch = props => {
             <CharacterList characters={props.characters}
                 getCharacterList={getCharactersList}
                 info={props.info} getCharacterDetailsById={getCharacterDetailsById}
-                characterDetails={props.characterDetails}/>
+                characterDetails={props.characterDetails}
+                otherRecommendationsDetails={props.otherRecommendationsDetails}
+                getOtherRecommendationList={getOtherRecommendationList} />
         </Container>
     );
 }
@@ -29,17 +31,23 @@ const mapStateToProps = state => {
         characters: state.charactersList.data && state.charactersList.data.results,
         info: state.charactersList.data && state.charactersList.data.info,
         characterDetailsLoading: state.characterDetails.loading,
-        characterDetails : state.characterDetails.data
+        characterDetailsError: state.characterDetails.error,
+        characterDetails: state.characterDetails.data,
+        otherRecommendationsLoading: state.characterDetails.recommendationListLoading,
+        otherRecommendationsError: state.characterDetails.recommendationListError,
+        otherRecommendationsDetails: state.characterDetails.recommendationListData
     };
 };
 
 //these functions will be accessible via props in child components
 const mapDispatchToProps = dispatch => {
     return {
-        getCharactersList: (url, filter) =>
-            dispatch(actions.getCharactersList(url, filter)),
+        getCharactersList: (url, filterType, filterValue) =>
+            dispatch(actions.getCharactersList(url, filterType, filterValue)),
         getCharacterDetailsById: (id) =>
-            dispatch(actions.getCharacterDetailsById(id))
+            dispatch(actions.getCharacterDetailsById(id)),
+        getOtherRecommendationList: (url, filterType, filterValue) =>
+            dispatch(actions.getOtherRecommendationList(url, filterType, filterValue)),
     };
 };
 

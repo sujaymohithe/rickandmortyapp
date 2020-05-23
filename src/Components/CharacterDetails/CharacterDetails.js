@@ -1,30 +1,46 @@
 import React from 'react';
-import { Container, Row, Col, Image, Modal } from 'react-bootstrap';
+import { Row, Col, Modal } from 'react-bootstrap';
 import PersonalDetails from './PersonalDetails/PersonalDetails';
+import LocationDetails from './LocationDetails/LocationDetails';
+import './CharacterDetails.css';
+import EpisodeDetails from './EpisodesDetails/EpisodesDetails';
 
 const CharacterDetails = (props) => {
-    const { show, onHide, characterDetails } = props;
+    debugger;
+    const { show, onHide, characterDetails, otherRecommendationsDetails } = props;
     return (
 
         <Modal show={show} onHide={onHide} size="lg">
             <Modal.Header closeButton>
                 <Modal.Title>
-                    {characterDetails.name}
+                    {characterDetails.characterPrimaryInfo.name}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Row>
-                    <Col sm={8}>
-                        <Row>
-                            <Col sm={8}>
-                                <PersonalDetails />
-                            </Col>
-                            <Col sm={4}>
-                                <Image src={characterDetails.image} thumbnail />
-                            </Col>
-                        </Row>
+                    <Col sm={8} className="chac-col">
+
+                        <PersonalDetails
+                            characterPrimaryInfo={characterDetails.characterPrimaryInfo} />
+
+                        <LocationDetails
+                            characterLocationDetails={characterDetails.characterPrimaryInfo} />
+
+                        <EpisodeDetails
+                            characterEpisodeDetails={characterDetails.characterEpisodesDetails} />
+
                     </Col>
-                    <Col sm={4}>sm=4</Col>
+                    <Col sm={4}>
+                        <b><u>Other recomendations based on same species</u></b>
+                        <ul>
+                            {
+                                otherRecommendationsDetails && otherRecommendationsDetails.results &&
+                                otherRecommendationsDetails.results.map((character, index) => {
+                                    return (<li key={index}>{character.name}</li>);
+                                })
+                            }
+                        </ul>
+                    </Col>
                 </Row>
             </Modal.Body>
         </Modal >

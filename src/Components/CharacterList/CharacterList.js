@@ -19,9 +19,9 @@ const CharacterList = (props) => {
     }
 
     const showCharacterDetails = (character) => {
-        debugger;
         setShow(true);
         props.getCharacterDetailsById(character.id);
+        props.getOtherRecommendationList('', 'species', character.species);
     }
 
     //to hide pop-up
@@ -30,8 +30,7 @@ const CharacterList = (props) => {
     }
 
     const searchButtonHandler = () => {
-        debugger;
-        props.getCharacterList('', document.getElementById('inCharacter').value);
+        props.getCharacterList('', 'name', document.getElementById('inCharacter').value);
     }
 
     return (
@@ -66,7 +65,8 @@ const CharacterList = (props) => {
 
             {props.characterDetails &&
                 <CharacterDetails show={show} onHide={hideCharacterDetails}
-                    characterDetails={props.characterDetails} />
+                    characterDetails={props.characterDetails} 
+                    otherRecommendationsDetails={props.otherRecommendationsDetails} />
             }
         </div>
     );
