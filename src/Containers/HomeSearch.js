@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/actions';
 import CharacterList from '../Components/CharacterList/CharacterList';
+import './HomeSearch.css';
 
 const HomeSearch = props => {
     const {
@@ -17,7 +18,7 @@ const HomeSearch = props => {
     }, [getCharactersList]);
 
     return (
-        <Container>
+        <Container className="">
             <CharacterList
                 characters={characters}
                 characterDetails={characterDetails}

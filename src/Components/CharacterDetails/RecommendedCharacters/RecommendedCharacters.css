@@ -13,3 +13,9 @@ ul{
 .img-link{
     margin-top: 10%;
 }
+
+.c-anchor{
+    color : brown;
+    text-transform: uppercase;
+    padding: 10px;
+}

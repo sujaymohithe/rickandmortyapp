@@ -22,7 +22,7 @@ input:focus, textarea:focus, select:focus{
 
 @media only screen and (max-width: 999px) {
     .Inline {
-        width : 50%;
+        width : 65%;
     }
   }
 

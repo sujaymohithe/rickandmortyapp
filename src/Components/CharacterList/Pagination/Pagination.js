@@ -9,16 +9,20 @@ const Pagination = props => {
     }
 
     return (
-        <div className="floater-R">
-            {props.info && <b className="sum-number">Total Records : {props.info.count}</b>}
-            {props.info.prev &&
-                <Button type="button" href={props.info.prev}
-                    onClick={(event) => buttonClickhandler(event)}
-                    variant="info">{'<'}Prev Page</Button>}{' '}
-            {props.info.next &&
-                <Button type="button" href={props.info.next}
-                    onClick={(event) => buttonClickhandler(event)}
-                    variant="info">Next Page{'>'}</Button>}
+        <div sm={12}>
+            <div sm={6}>
+                {props.info && <b className="sum-number">Total Records : {props.info.count}</b>}
+            </div>
+            <div sm={6}>
+                {props.info.prev &&
+                    <Button type="button" href={props.info.prev}
+                        onClick={(event) => buttonClickhandler(event)}
+                        variant="info">{'<'}Prev Page</Button>}{' '}
+                {props.info.next &&
+                    <Button type="button" href={props.info.next}
+                        onClick={(event) => buttonClickhandler(event)}
+                        variant="info">Next Page{'>'}</Button>}
+            </div>
         </div>
     );
 }

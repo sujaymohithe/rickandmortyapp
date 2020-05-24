@@ -8,7 +8,7 @@ import './CharacterDetails.css';
 
 const CharacterDetails = props => {
     const { show, onHide, characterDetails,
-         getCharacterDetailsById } = props;
+         getCharacterDetailsById, getMoreRecommendations } = props;
 
     return (
         <Modal show={show} onHide={onHide} size="lg">
@@ -35,13 +35,15 @@ const CharacterDetails = props => {
 
                         </Col>
                         <Col sm={4}>
-                            <b><u>Other recommendations based on same species</u></b>
+                            <b><u>Recommendations based on same species</u></b><br/>
                             {
                                 !characterDetails.recommendationListLoading &&
                                 characterDetails.recommendationListData &&
                                 <RecommendedCharacters
                                     otherCharacters={characterDetails.recommendationListData.results}
-                                    getCharacterDetailsById={getCharacterDetailsById} />
+                                    info={characterDetails.recommendationListData.info}
+                                    getCharacterDetailsById={getCharacterDetailsById} 
+                                    getMoreRecommendations={getMoreRecommendations} />
                             }
                         </Col>
                     </Row>

@@ -27,18 +27,18 @@ class charactersAPI {
                 data.characterEpisodesDetails = [];
                 let episodesUrl = response.data.episode;
                 let index = 0;
-                function request() {
+                //fetch all episodes
+                const getEpisodesRequest = () => {
                     return axios.get(episodesUrl[index]).then(result => {
                         index++;
                         data.characterEpisodesDetails.push(result.data);
                         if (index >= episodesUrl.length) {
                             return data;
                         }
-                        return request();
-                    });
-            
+                        return getEpisodesRequest();
+                    });            
                 }
-                return request();
+                return getEpisodesRequest();
             }).catch(error => {
                 throw (error);
             });

@@ -46,15 +46,15 @@ const CharacterList = props => {
     return (
         <div>
             <br /><h2 data-testid='header'>List of characters</h2>
-            <Form onSubmit={onSubmit}>
-                <input type="text"
+            <Form sm={12} onSubmit={onSubmit}>
+                <input type="text" 
                     className="form-input Inline"
                     id="inCharacter"
                     autoComplete="off"
                     placeholder="Type the name of a character"
                     value={name}
                     onChange={event => setName(event.target.value)} />
-                <Button type="submit"
+                <Button type="submit" 
                     className="search-button btn-info">Search</Button>
             </Form>
             {
@@ -86,6 +86,7 @@ const CharacterList = props => {
                 <CharacterDetails show={show} onHide={hideCharacterDetails}
                     characterDetails={characterDetails}
                     getCharacterDetailsById={getCharacterDetailsById}
+                    getMoreRecommendations = {getOtherRecommendationList}
                 />
             }
         </div>
