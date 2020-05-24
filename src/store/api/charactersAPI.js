@@ -4,7 +4,6 @@ import * as appConstants from '../../AppConstants';
 class charactersAPI {
     //fetch characters from api
     static fetchCharactersList(url = '', filterType, filterValue) {
-        debugger;
         let apiUrl = url === '' ? appConstants.API_URL + '/character/' : url;
         if (filterType) {
             apiUrl = `${apiUrl}?${filterType}=${filterValue}`;
@@ -13,13 +12,14 @@ class charactersAPI {
             .then(response => {
                 return response.data;
             }).catch(error => {
+                if(error.response.status === 404)
+                    return null;
                 throw (error);
             });
     };
 
-    //fetch character details by id parameter
+    //fetch character details by character id parameter
     static fetchCharacterDetailsById(id) {
-        debugger;
         let data = {}, apiUrl = `${appConstants.API_URL}/character/${id}`;
         return axios.get(apiUrl)
             .then(response => {

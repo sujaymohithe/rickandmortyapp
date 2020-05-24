@@ -27,7 +27,7 @@ export const getCharactersListFailure = (error) => {
 //currying the dispatch method of the store to get all characters list
 export function getCharactersList(url, filterType, filterValue) {
     return function (dispatch) {
-        //dispatch(getCharactersListStart());
+        dispatch(getCharactersListStart());
         return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
             dispatch(getCharactersListSuccess(data));
         }).catch(error => {
@@ -61,9 +61,8 @@ export const getRecommendationListFailure = (error) => {
 
 //currying the dispatch method of the store to get all other recommendations list
 export function getOtherRecommendationList(url, filterType, filterValue) {
-    debugger;
     return function (dispatch) {
-        //dispatch(getRecommendationListStart());
+        dispatch(getRecommendationListStart());
         return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
             dispatch(getRecommendationListSuccess(data));
         }).catch(error => {
@@ -100,7 +99,6 @@ export function getCharacterDetailsById(id) {
     return function (dispatch) {
         dispatch(getCharacterDetailsStart());
         return charactersAPI.fetchCharacterDetailsById(id).then(data => {
-            debugger;
             dispatch(getCharacterDetailsSuccess(data));
         }).catch(error => {
             dispatch(getCharacterDetailsFailure(error));

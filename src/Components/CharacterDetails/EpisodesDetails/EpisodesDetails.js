@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Row, Col } from 'react-bootstrap';
 
-const EpisodeDetails = (props) => {
+const EpisodeDetails = props => {
     const { characterEpisodeDetails } = props;
 
     //function to populate and display the episode details
@@ -16,7 +16,7 @@ const EpisodeDetails = (props) => {
     }
 
     return (
-        <Row className="article-section">
+        <Row className="article-section chac-box">
             <Col sm={12}>
                 <div className="articleHeader">
                     <h5><u>Episode Details</u></h5>

@@ -3,14 +3,22 @@ import './CharacterList.css';
 import { Table, Form, Button } from 'react-bootstrap';
 import Pagination from './Pagination/Pagination';
 import CharacterDetails from '../CharacterDetails/CharacterDetails';
+import { NO_RESULTS } from '../../AppConstants';
 
-const CharacterList = (props) => {
+const CharacterList = props => {
     let [show, setShow] = useState(false);
-    //function to populate and display the characters dropdown options
+    const [name, setName] = useState('');
+    const { characters, characterDetails, getCharacterDetailsById,
+        getOtherRecommendationList, getCharacterList } = props;
+
+    //function to populate and display the characters list in a table
     const populateCharactersList = (character, index) => {
         return (
             <tr key={index}>
-                <td><button onClick={() => showCharacterDetails(character)}>Click Here</button></td>
+                <td>
+                    <button className="ButtonLink"
+                        onClick={() => showCharacterDetails(character)}>Click Here</button>
+                </td>
                 <td>{character.name}</td>
                 <td>{character.status}</td>
                 <td>{character.species}</td>
@@ -20,8 +28,8 @@ const CharacterList = (props) => {
 
     const showCharacterDetails = (character) => {
         setShow(true);
-        props.getCharacterDetailsById(character.id);
-        props.getOtherRecommendationList('', 'species', character.species);
+        getCharacterDetailsById(character.id);
+        getOtherRecommendationList('', 'species', character.species);
     }
 
     //to hide pop-up
@@ -29,48 +37,59 @@ const CharacterList = (props) => {
         setShow(false);
     }
 
-    const searchButtonHandler = () => {
-        props.getCharacterList('', 'name', document.getElementById('inCharacter').value);
+    const onSubmit = (event) => {
+        const inputTxt = document.getElementById('inCharacter').value;
+        getCharacterList('', 'name', inputTxt.trim());
+        event.preventDefault();
     }
 
     return (
         <div>
-            <br /><h2>List of characters </h2>
-            <Form>
+            <br /><h2 data-testid='header'>List of characters</h2>
+            <Form onSubmit={onSubmit}>
                 <input type="text"
                     className="form-input Inline"
-                    id="inCharacter" placeholder="Type the name of a character" />
-                <Button type="button" onClick={searchButtonHandler}
+                    id="inCharacter"
+                    autoComplete="off"
+                    placeholder="Type the name of a character"
+                    value={name}
+                    onChange={event => setName(event.target.value)} />
+                <Button type="submit"
                     className="search-button btn-info">Search</Button>
             </Form>
             {
-                props.info &&
-                <Pagination info={props.info} getCharacterList={props.getCharacterList} />
-            }
-            <br />
-            <Table striped bordered hover variant="light">
-                <thead>
-                    <tr>
-                        <th>More Details</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Species</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.characters &&
-                        props.characters.map((eachRow, index) => populateCharactersList(eachRow, index))}
-                </tbody>
-            </Table>
+                characters.data &&
+                <>
+                    <Pagination info={characters.data.info} getCharacterList={getCharacterList} />
 
-            {props.characterDetails &&
+                    <br />
+                    <Table striped bordered hover variant="light">
+                        <thead>
+                            <tr>
+                                <th>More Details</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Species</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {characters.data.results.map((eachRow, index) => populateCharactersList(eachRow, index))}
+                        </tbody>
+                    </Table>
+                </>
+            }
+            {
+                !characters.data && <h3 className="center">{NO_RESULTS}</h3>
+            }
+
+            {characterDetails &&
                 <CharacterDetails show={show} onHide={hideCharacterDetails}
-                    characterDetails={props.characterDetails} 
-                    otherRecommendationsDetails={props.otherRecommendationsDetails} />
+                    characterDetails={characterDetails}
+                    getCharacterDetailsById={getCharacterDetailsById}
+                />
             }
         </div>
     );
-
 }
 
 export default CharacterList;

@@ -1,0 +1,15 @@
+.img-char{
+    height: 100px;
+}
+
+ul li{
+    list-style-type:none;
+}
+
+ul{
+    padding-left: 0px;
+}
+
+.img-link{
+    margin-top: 10%;
+}

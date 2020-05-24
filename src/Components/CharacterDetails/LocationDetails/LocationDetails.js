@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-const LocationDetails = (props) => {
+const LocationDetails = props => {
     const { characterLocationDetails } = props;
     return (
         <Row className="article-section">
