@@ -30,7 +30,7 @@ const HomeSearch = props => {
 }
 
 //method that copies part of the state to the props of this component.
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return {
         characters: state.charactersList,
         characterDetails: state.characterDetails,
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 };
 
 //these functions will be accessible via props in child components
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
     return {
         getCharactersList: (url, filterType, filterValue) =>
             dispatch(actions.getCharactersList(url, filterType, filterValue)),

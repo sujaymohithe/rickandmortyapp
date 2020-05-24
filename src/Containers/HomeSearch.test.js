@@ -16,5 +16,7 @@ describe('<HomeSearch/> Container', () => {
 
     it('should render the HomeSearch container', () => {
         expect(container.length).toEqual(1);
+        expect(container).toMatchSnapshot();
     });
+
 });

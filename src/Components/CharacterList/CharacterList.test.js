@@ -46,9 +46,9 @@ describe('<CharacterList/> Component', () => {
 
         const firstRowColumns = rows.first().find('td').map(column => column.text())
         expect(firstRowColumns.length).toEqual(4);
-        expect(firstRowColumns[1]).toEqual('Rick')
-        expect(firstRowColumns[2]).toEqual('Alive')
-        expect(firstRowColumns[3]).toEqual('Human')
+        expect(firstRowColumns[1]).toEqual('Rick');
+        expect(firstRowColumns[2]).toEqual('Alive');
+        expect(firstRowColumns[3]).toEqual('Human');
     });
     
     it('should have 1 input field', () => {
