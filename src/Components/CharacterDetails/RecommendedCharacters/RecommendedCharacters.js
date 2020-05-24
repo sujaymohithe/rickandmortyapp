@@ -17,12 +17,14 @@ const RecommendedCharacters = props => {
 
     return (
         <>
-            {info.prev &&
-                <a href={info.prev} className="c-anchor"
-                    onClick={(event) => linkClickhandler(event)}>{'< '}Prev</a>}{' '}
-            {info.next &&
-                <a href={info.next} className="c-anchor"
-                    onClick={(event) => linkClickhandler(event)}>More{' >'}</a>}
+            <div>
+                {info.prev &&
+                    <a href={info.prev} className="c-anchor"
+                        onClick={(event) => linkClickhandler(event)}>{'< '}Prev</a>}{' '}
+                {info.next &&
+                    <a href={info.next} className="c-anchor"
+                        onClick={(event) => linkClickhandler(event)}>More{' >'}</a>}
+            </div>
             <ul>
                 {
                     otherCharacters.map((character, index) => {

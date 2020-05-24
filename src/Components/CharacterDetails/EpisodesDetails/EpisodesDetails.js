@@ -21,7 +21,7 @@ const EpisodeDetails = props => {
                 <div className="articleHeader">
                     <h5><u>Episode Details</u></h5>
                 </div>
-                <div className="articleContent">
+                <div className="articleEContent">
                     <Table striped bordered hover variant="light">
                         <thead>
                             <tr>

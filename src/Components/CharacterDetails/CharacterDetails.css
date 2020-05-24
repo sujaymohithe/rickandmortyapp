@@ -7,6 +7,11 @@
     margin-left: 35px;
 }
 
+.articleEContent{
+    width: 75%;
+    float: left;
+}
+
 .article-section{
     padding-top: 20px;
 }
