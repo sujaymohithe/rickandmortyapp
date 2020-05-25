@@ -11,13 +11,13 @@ const LocationDetails = props => {
                 </div>
                 <div className="articleContent">
                     <Row>
-                        <span>Origin :
-                            <b>{characterLocationDetails.origin.name}</b>
+                        <span>
+                            Origin : <b>{characterLocationDetails.origin.name}</b>
                         </span>
                     </Row>
                     <Row>
-                        <span>Location :
-                            <b>{characterLocationDetails.location.name}</b>
+                        <span>
+                            Location : <b>{characterLocationDetails.location.name}</b>
                         </span>
                     </Row>
                 </div>
