@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import './Pagination.css';
 
 const Pagination = props => {
+    //function to get next or previous set of character list using API call
     const buttonClickhandler = (event) => {
         event.preventDefault()
         props.getCharacterList(event.target.href);
@@ -11,7 +12,8 @@ const Pagination = props => {
     return (
         <div sm={12}>
             <div sm={6}>
-                {props.info && <b className="sum-number">Total Records : {props.info.count}</b>}
+                {props.info &&
+                    <b className="sum-number">Total Records : {props.info.count}</b>}
             </div>
             <div sm={6}>
                 {props.info.prev &&

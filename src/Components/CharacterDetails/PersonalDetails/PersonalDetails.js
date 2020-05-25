@@ -10,10 +10,18 @@ const PersonalDetails = props => {
                     <h5><u>Personal Details</u></h5>
                 </div>
                 <div className="articleContent">
-                    <Row><span>Name : <b>{characterPrimaryInfo.name}</b></span></Row>
-                    <Row><span>Status : <b>{characterPrimaryInfo.status}</b></span></Row>
-                    <Row><span>Species : <b>{characterPrimaryInfo.species}</b></span></Row>
-                    <Row><span>Gender : <b>{characterPrimaryInfo.gender}</b></span></Row>
+                    <Row>
+                        <span>Name : <b>{characterPrimaryInfo.name}</b></span>
+                    </Row>
+                    <Row>
+                        <span>Status : <b>{characterPrimaryInfo.status}</b></span>
+                    </Row>
+                    <Row>
+                        <span>Species : <b>{characterPrimaryInfo.species}</b></span>
+                    </Row>
+                    <Row>
+                        <span>Gender : <b>{characterPrimaryInfo.gender}</b></span>
+                    </Row>
                 </div>
             </Col>
             <Col sm={4}>

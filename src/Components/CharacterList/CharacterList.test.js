@@ -36,10 +36,6 @@ describe('<CharacterList/> Component', () => {
         expect(component.find('tbody').find('tr').length).toEqual(1);
     });
 
-    it('should render the characters list table with 1 character', () => {
-        expect(component.find('tbody').find('tr').length).toEqual(1);
-    });
-
     it('should render the characters list table with character name as per props', () => {
         const rows = component.find('tbody').find('tr');
         expect(rows.length).toEqual(1)

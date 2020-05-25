@@ -8,7 +8,7 @@ import './CharacterDetails.css';
 
 const CharacterDetails = props => {
     const { show, onHide, characterDetails,
-         getCharacterDetailsById, getMoreRecommendations } = props;
+        getCharacterDetailsById, getMoreRecommendations } = props;
 
     return (
         <Modal show={show} onHide={onHide} size="lg">
@@ -24,25 +24,25 @@ const CharacterDetails = props => {
                     <Row>
                         <Col sm={8} className="chac-col">
 
-                            <PersonalDetails 
+                            <PersonalDetails
                                 characterPrimaryInfo={characterDetails.data.characterPrimaryInfo} />
 
-                            <LocationDetails 
+                            <LocationDetails
                                 characterLocationDetails={characterDetails.data.characterPrimaryInfo} />
 
-                            <EpisodeDetails 
+                            <EpisodeDetails
                                 characterEpisodeDetails={characterDetails.data.characterEpisodesDetails} />
 
                         </Col>
                         <Col sm={4}>
-                            <b><u>Recommendations based on same species</u></b><br/>
+                            <b><u>Recommendations based on same species</u></b><br />
                             {
                                 !characterDetails.recommendationListLoading &&
                                 characterDetails.recommendationListData &&
                                 <RecommendedCharacters
                                     otherCharacters={characterDetails.recommendationListData.results}
                                     info={characterDetails.recommendationListData.info}
-                                    getCharacterDetailsById={getCharacterDetailsById} 
+                                    getCharacterDetailsById={getCharacterDetailsById}
                                     getMoreRecommendations={getMoreRecommendations} />
                             }
                         </Col>

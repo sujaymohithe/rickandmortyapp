@@ -48,7 +48,7 @@ export function characterDetails(state = initialState, action) {
         case GET_RECOMMENDATIONLIST_FAIL:
             return Object.assign({}, state, {
                 recommendationListError: action.error,
-                loading: false
+                recommendationListLoading: false
             });
         default:
             return state;

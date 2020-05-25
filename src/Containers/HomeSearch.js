@@ -18,7 +18,7 @@ const HomeSearch = props => {
     }, [getCharactersList]);
 
     return (
-        <Container className="">
+        <Container>
             <CharacterList
                 characters={characters}
                 characterDetails={characterDetails}
@@ -31,7 +31,7 @@ const HomeSearch = props => {
 }
 
 //method that copies part of the state to the props of this component.
-export const mapStateToProps = state => {
+const mapStateToProps = state => {
     return {
         characters: state.charactersList,
         characterDetails: state.characterDetails,
@@ -39,7 +39,7 @@ export const mapStateToProps = state => {
 };
 
 //these functions will be accessible via props in child components
-export const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         getCharactersList: (url, filterType, filterValue) =>
             dispatch(actions.getCharactersList(url, filterType, filterValue)),

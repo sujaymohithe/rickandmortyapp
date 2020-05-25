@@ -28,22 +28,23 @@ export const getCharactersListFailure = (error) => {
 export function getCharactersList(url, filterType, filterValue) {
     return function (dispatch) {
         dispatch(getCharactersListStart());
-        return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
-            dispatch(getCharactersListSuccess(data));
-        }).catch(error => {
-            dispatch(getCharactersListFailure(error));
-        });
+        return charactersAPI.fetchCharactersList(url, filterType, filterValue)
+            .then(data => {
+                dispatch(getCharactersListSuccess(data));
+            }).catch(error => {
+                dispatch(getCharactersListFailure(error));
+            });
     };
 }
 
-//get same species other character recommendation list start dispatch method
+//get same species characters recommendation list start dispatch method
 export const getRecommendationListStart = () => {
     return {
         type: actionTypes.GET_RECOMMENDATIONLIST_START
     };
 };
 
-//get same species other character recommendation list start dispatch method
+//get same species characters recommendation list success dispatch method
 export const getRecommendationListSuccess = (list) => {
     return {
         type: actionTypes.GET_RECOMMENDATIONLIST_SUCCESS,
@@ -51,7 +52,7 @@ export const getRecommendationListSuccess = (list) => {
     };
 };
 
-//get characters list failure dispatch method
+//get same species characters recommendation list failure dispatch method
 export const getRecommendationListFailure = (error) => {
     return {
         type: actionTypes.GET_RECOMMENDATIONLIST_FAIL,
@@ -63,11 +64,12 @@ export const getRecommendationListFailure = (error) => {
 export function getOtherRecommendationList(url, filterType, filterValue) {
     return function (dispatch) {
         dispatch(getRecommendationListStart());
-        return charactersAPI.fetchCharactersList(url, filterType, filterValue).then(data => {
-            dispatch(getRecommendationListSuccess(data));
-        }).catch(error => {
-            dispatch(getRecommendationListFailure(error));
-        });
+        return charactersAPI.fetchCharactersList(url, filterType, filterValue)
+            .then(data => {
+                dispatch(getRecommendationListSuccess(data));
+            }).catch(error => {
+                dispatch(getRecommendationListFailure(error));
+            });
     };
 }
 

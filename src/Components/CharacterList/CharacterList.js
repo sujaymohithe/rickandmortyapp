@@ -7,7 +7,7 @@ import { NO_RESULTS } from '../../AppConstants';
 
 const CharacterList = props => {
     let [show, setShow] = useState(false);
-    const [name, setName] = useState('');
+    let [name, setName] = useState('');
     const { characters, characterDetails, getCharacterDetailsById,
         getOtherRecommendationList, getCharacterList } = props;
 
@@ -17,7 +17,8 @@ const CharacterList = props => {
             <tr key={index}>
                 <td>
                     <button className="ButtonLink"
-                        onClick={() => showCharacterDetails(character)}>Click Here</button>
+                        onClick={() => showCharacterDetails(character)}>Click Here
+                    </button>
                 </td>
                 <td>{character.name}</td>
                 <td>{character.status}</td>
@@ -26,7 +27,10 @@ const CharacterList = props => {
         );
     }
 
+    /* function to get character details and other recommendations when clicked on
+    individual character */
     const showCharacterDetails = (character) => {
+        //details view modal opens up
         setShow(true);
         getCharacterDetailsById(character.id);
         getOtherRecommendationList('', 'species', character.species);
@@ -37,6 +41,7 @@ const CharacterList = props => {
         setShow(false);
     }
 
+    //function for getting character list by searching using name
     const onSubmit = (event) => {
         const inputTxt = document.getElementById('inCharacter').value;
         getCharacterList('', 'name', inputTxt.trim());
@@ -47,14 +52,14 @@ const CharacterList = props => {
         <div>
             <br /><h2 data-testid='header'>List of characters</h2>
             <Form sm={12} onSubmit={onSubmit}>
-                <input type="text" 
+                <input type="text"
                     className="form-input Inline"
                     id="inCharacter"
                     autoComplete="off"
                     placeholder="Type the name of a character"
                     value={name}
                     onChange={event => setName(event.target.value)} />
-                <Button type="submit" 
+                <Button type="submit"
                     className="search-button btn-info">Search</Button>
             </Form>
             {
@@ -86,7 +91,7 @@ const CharacterList = props => {
                 <CharacterDetails show={show} onHide={hideCharacterDetails}
                     characterDetails={characterDetails}
                     getCharacterDetailsById={getCharacterDetailsById}
-                    getMoreRecommendations = {getOtherRecommendationList}
+                    getMoreRecommendations={getOtherRecommendationList}
                 />
             }
         </div>
